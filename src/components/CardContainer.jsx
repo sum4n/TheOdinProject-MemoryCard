@@ -1,7 +1,16 @@
+import Card from "./Card";
+
 function CardContainer() {
   return (
     <div className="card-container">
-      <div className="cards">{/* TODO: Card component */}</div>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </div>
   );
 }

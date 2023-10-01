@@ -18,8 +18,22 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.card {
-  padding: 2em;
+.card-container {
+  border: 2px solid ghostwhite;
+  height: 100vh;
+  width: 100%;
+  /* padding: 14px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* gap: 8px; */
+  align-items: center;
+}
+
+.cards {
+  height: 40%;
+  width: 20%;
+  border: 1px solid mediumspringgreen;
 }
 
 .read-the-docs {
