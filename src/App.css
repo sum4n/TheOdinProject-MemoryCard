@@ -18,9 +18,16 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.scores {
+  font-weight: bold;
+  text-decoration: underline;
+  display: flex;
+  justify-content: space-between;
+}
+
 .card-container {
   border: 2px solid ghostwhite;
-  height: 100vh;
+  height: 70%;
   width: 100%;
   /* padding: 14px; */
   display: flex;
