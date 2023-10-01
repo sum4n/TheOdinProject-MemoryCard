@@ -1,16 +1,11 @@
 import Card from "./Card";
 
-function CardContainer() {
+function CardContainer({ cardList, handleClick }) {
   return (
     <div className="card-container">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {cardList.map((card) => (
+        <Card key={card.id} num={card.num} handleClick={handleClick} />
+      ))}
     </div>
   );
 }
