@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import CardContainer from "./components/CardContainer";
 
-let cardList = [
+const cardObjList = [
   { id: 1, num: "1" },
   { id: 2, num: "2" },
   { id: 3, num: "3" },
@@ -17,10 +17,14 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [playerName, setPlayerName] = useState("Agadran");
-  const [defaultList, setCardList] = useState(cardList);
+  const [cardList, setCardList] = useState(cardObjList);
 
-  const handleCardClick = (e) => {
-    console.log(e.target.textContent);
+  const handleCardClick = () => {
+    let shuffledArray = cardList.sort((a, b) => 0.5 - Math.random());
+    // console.log(shuffledArray);
+    setCardList(() => {
+      return [...shuffledArray];
+    });
   };
 
   return (
@@ -33,7 +37,7 @@ function App() {
         </p>
       </div>
       {/* TODO: Card Container */}
-      <CardContainer cardList={defaultList} handleClick={handleCardClick} />
+      <CardContainer cardList={cardList} handleClick={handleCardClick} />
       {/* TODO: Game Start Container */}
       {/* TODO: Game End Container */}
     </>
