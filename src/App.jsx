@@ -24,9 +24,9 @@ function App() {
   // let highScore = 0;
 
   const handleCardClick = (e) => {
-    console.log(e.currentTarget.id);
-
+    // console.log(e.currentTarget.id);
     if (!clickedCardList.includes(e.currentTarget.id)) {
+      // do below only on unique click
       clickedCardList.push(e.currentTarget.id);
       console.log(clickedCardList);
 
@@ -44,13 +44,17 @@ function App() {
         setHighScore(highScore + 1);
       }
     } else {
+      // on non unique card click
       // set score 0
       setCurrentScore(0);
       // reset the card order
-      // let sortedList = cardList.sort();
-      // setCardList(() => {
-      //   return [...sortedList];
-      // });
+      let sortedList = cardList.sort((a, b) => a.id - b.id);
+      setCardList(() => {
+        return [...sortedList];
+      });
+
+      // empty clickedCardList array
+      clickedCardList = [];
     }
   };
 
