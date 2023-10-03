@@ -40,9 +40,9 @@ function App() {
       // set current score
       setCurrentScore(currentScore + 1);
       // set hight score
-      // if (currentScore > highScore || highScore == 0) {
-      //   highScore++;
-      // }
+      if (currentScore == highScore || highScore == 0) {
+        setHighScore(highScore + 1);
+      }
     } else {
       // set score 0
       setCurrentScore(0);
