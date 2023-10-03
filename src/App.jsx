@@ -13,18 +13,45 @@ const cardObjList = [
   { id: 8, num: "8" },
 ];
 
+let clickedCardList = [];
+
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [playerName, setPlayerName] = useState("Agadran");
   const [cardList, setCardList] = useState(cardObjList);
 
-  const handleCardClick = () => {
-    let shuffledArray = cardList.sort((a, b) => 0.5 - Math.random());
-    // console.log(shuffledArray);
-    setCardList(() => {
-      return [...shuffledArray];
-    });
+  // let highScore = 0;
+
+  const handleCardClick = (e) => {
+    console.log(e.currentTarget.id);
+
+    if (!clickedCardList.includes(e.currentTarget.id)) {
+      clickedCardList.push(e.currentTarget.id);
+      console.log(clickedCardList);
+
+      // shuffle and rerender cards
+      let shuffledArray = cardList.sort((a, b) => 0.5 - Math.random());
+      // console.log(shuffledArray);
+      setCardList(() => {
+        return [...shuffledArray];
+      });
+
+      // set current score
+      setCurrentScore(currentScore + 1);
+      // set hight score
+      // if (currentScore > highScore || highScore == 0) {
+      //   highScore++;
+      // }
+    } else {
+      // set score 0
+      setCurrentScore(0);
+      // reset the card order
+      // let sortedList = cardList.sort();
+      // setCardList(() => {
+      //   return [...sortedList];
+      // });
+    }
   };
 
   return (
