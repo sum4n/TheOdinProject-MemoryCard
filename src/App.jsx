@@ -11,6 +11,10 @@ const cardObjList = [
   { id: 6, num: "6" },
   { id: 7, num: "7" },
   { id: 8, num: "8" },
+  { id: 9, num: "9" },
+  { id: 10, num: "10" },
+  { id: 11, num: "11" },
+  { id: 12, num: "12" },
 ];
 
 let clickedCardList = [];
@@ -28,7 +32,7 @@ function App() {
     if (!clickedCardList.includes(e.currentTarget.id)) {
       // do below only on unique click
       clickedCardList.push(e.currentTarget.id);
-      console.log(clickedCardList);
+      // console.log(clickedCardList);
 
       // shuffle and rerender cards
       let shuffledArray = cardList.sort((a, b) => 0.5 - Math.random());
