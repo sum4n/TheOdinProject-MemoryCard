@@ -17,6 +17,19 @@ const cardObjList = [
   { id: 12, num: "12" },
 ];
 
+// function picList() {
+//   fetch("https://pokeapi.co/api/v2/pokemon/?limit=12", { mode: "cors" })
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (response) {
+//       // console.log(response.results);
+//       // return response.results;
+//       response.results.map((result) => console.log(result.name));
+//     });
+// }
+// console.log(picList());
+
 let clickedCardList = [];
 
 function App() {

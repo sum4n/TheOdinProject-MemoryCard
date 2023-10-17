@@ -6,19 +6,26 @@
 }
 
 .card-container {
-  border: 2px solid ghostwhite;
-  height: 70%;
+  border: 2px solid rgb(0, 0, 0);
+  height: 100%;
   width: 100%;
   /* padding: 14px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* gap: 8px; */
+  gap: 8px;
   align-items: center;
 }
 
 .cards {
-  height: 20%;
+  height: 150px;
   width: 20%;
   border: 1px solid mediumspringgreen;
+}
+
+img {
+  display: block;
+  height: 120px;
+  margin: auto;
+  /* width: 80%; */
 }
