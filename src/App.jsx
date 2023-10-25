@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import CardContainer from "./components/CardContainer";
 
@@ -17,18 +17,22 @@ const cardObjList = [
   { id: 12, num: "12" },
 ];
 
-// function picList() {
-//   fetch("https://pokeapi.co/api/v2/pokemon/?limit=12", { mode: "cors" })
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (response) {
-//       // console.log(response.results);
-//       // return response.results;
-//       response.results.map((result) => console.log(result.name));
-//     });
-// }
-// console.log(picList());
+// let listPic;
+
+async function picList() {
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=12", {
+    mode: "cors",
+  });
+  const picData = await response.json();
+  // console.log(picData.results);
+  // listPic = picData.results;
+  // console.log(listPic);
+  return picData.results;
+}
+console.log(picList());
+let asc = picList();
+console.log(asc);
+// console.log(listPic);
 
 let clickedCardList = [];
 
@@ -36,9 +40,17 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [playerName, setPlayerName] = useState("Agadran");
-  const [cardList, setCardList] = useState(cardObjList);
+  const [cardList, setCardList] = useState(null);
 
   // let highScore = 0;
+
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=12")
+      .then((response) => response.json())
+      .then((data) => setCardList(data.results));
+  }, []);
+
+  console.log(cardList);
 
   const handleCardClick = (e) => {
     // console.log(e.currentTarget.id);
@@ -84,8 +96,11 @@ function App() {
           High score: {highScore} ({playerName})
         </p>
       </div>
+      {/* <div>{cardList && cardList.map((card) => <p> {card.name} </p>)}</div> */}
       {/* TODO: Card Container */}
-      <CardContainer cardList={cardList} handleClick={handleCardClick} />
+      {cardList && (
+        <CardContainer cardList={cardList} handleClick={handleCardClick} />
+      )}
       {/* TODO: Game Start Container */}
       {/* TODO: Game End Container */}
     </>
