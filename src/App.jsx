@@ -7,18 +7,16 @@ let clickedCardList = [];
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [playerName, setPlayerName] = useState("Agadran");
   const [cardList, setCardList] = useState(null);
-
-  // let highScore = 0;
+  const [gameCount, setGameCount] = useState(0);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=12")
       .then((response) => response.json())
       .then((data) => setCardList(data.results));
-  }, []);
+  }, [gameCount]);
 
-  // console.log(cardList);
+  // console.log(clickedCardList);
 
   const handleCardClick = (e) => {
     // console.log(e.currentTarget.id);
@@ -42,34 +40,48 @@ function App() {
       }
     } else {
       // on non unique card click
-      // set score 0
-      setCurrentScore(0);
-      // reset the card order
-      let sortedList = cardList.sort((a, b) => a.id - b.id);
-      setCardList(() => {
-        return [...sortedList];
-      });
+      // empty the card list to show game end message
+      setCardList(null);
+    }
 
-      // empty clickedCardList array
-      clickedCardList = [];
+    // if player guesses all correctly
+    if (clickedCardList.length == 12) {
+      setCardList(null);
+      // clickedCardList = [];
     }
   };
+
+  function playAgain() {
+    setCurrentScore(0);
+    // increases gameCount to trigger useEffect rerender
+    setGameCount(gameCount + 1);
+    // empty clickedCardList
+    clickedCardList = [];
+  }
 
   return (
     <>
       <h1>Project: Memory Card</h1>
       <div className="scores">
         <p className="current-score">Score: {currentScore}</p>
-        <p className="hight-score">
-          High score: {highScore} ({playerName})
-        </p>
+        <p className="hight-score">High score: {highScore}</p>
       </div>
-      {/* TODO: Card Container */}
-      {cardList && (
+
+      {cardList ? (
         <CardContainer cardList={cardList} handleClick={handleCardClick} />
+      ) : (
+        <>
+          {clickedCardList.length == 12 ? (
+            <h1>You win!!</h1>
+          ) : (
+            <h1>Game Over</h1>
+          )}
+          <p>Your score {currentScore}</p>
+          <button className="play-again" onClick={playAgain}>
+            Play Again
+          </button>
+        </>
       )}
-      {/* TODO: Game Start Container */}
-      {/* TODO: Game End Container */}
     </>
   );
 }
