@@ -12,7 +12,7 @@ function Card({ name, url, handleClick }) {
   return (
     <div className="cards" id={name} onClick={handleClick}>
       {imgSrc && <img src={imgSrc} alt="" />}
-      <p>{name}</p>
+      <p className="card-name">{name}</p>
     </div>
   );
 }
