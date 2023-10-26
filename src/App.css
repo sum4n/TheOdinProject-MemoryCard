@@ -45,3 +45,13 @@ img {
   text-decoration: underline;
   text-transform: capitalize;
 }
+
+.play-again {
+  border: none;
+  border-radius: 6px;
+  width: 120px;
+  height: 40px;
+  background-color: mediumspringgreen;
+  color: black;
+  font-weight: bold;
+}
