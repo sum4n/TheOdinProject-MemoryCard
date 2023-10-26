@@ -83,7 +83,12 @@ function App() {
         </>
       )}
 
-      <a id="footer" href="https://github.com/sum4n/TheOdinProject-MemoryCard">
+      <a
+        id="footer"
+        href="https://github.com/sum4n/TheOdinProject-MemoryCard"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Made with React
       </a>
     </>
