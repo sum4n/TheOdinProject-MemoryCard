@@ -2,38 +2,6 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import CardContainer from "./components/CardContainer";
 
-const cardObjList = [
-  { id: 1, num: "1" },
-  { id: 2, num: "2" },
-  { id: 3, num: "3" },
-  { id: 4, num: "4" },
-  { id: 5, num: "5" },
-  { id: 6, num: "6" },
-  { id: 7, num: "7" },
-  { id: 8, num: "8" },
-  { id: 9, num: "9" },
-  { id: 10, num: "10" },
-  { id: 11, num: "11" },
-  { id: 12, num: "12" },
-];
-
-// let listPic;
-
-async function picList() {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=12", {
-    mode: "cors",
-  });
-  const picData = await response.json();
-  // console.log(picData.results);
-  // listPic = picData.results;
-  // console.log(listPic);
-  return picData.results;
-}
-console.log(picList());
-let asc = picList();
-console.log(asc);
-// console.log(listPic);
-
 let clickedCardList = [];
 
 function App() {
@@ -50,7 +18,7 @@ function App() {
       .then((data) => setCardList(data.results));
   }, []);
 
-  console.log(cardList);
+  // console.log(cardList);
 
   const handleCardClick = (e) => {
     // console.log(e.currentTarget.id);
@@ -96,7 +64,6 @@ function App() {
           High score: {highScore} ({playerName})
         </p>
       </div>
-      {/* <div>{cardList && cardList.map((card) => <p> {card.name} </p>)}</div> */}
       {/* TODO: Card Container */}
       {cardList && (
         <CardContainer cardList={cardList} handleClick={handleCardClick} />

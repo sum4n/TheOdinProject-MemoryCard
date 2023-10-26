@@ -1,14 +1,18 @@
+import { useState, useEffect } from "react";
+
 function Card({ name, url, handleClick }) {
-  // let url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${num}.svg`;
-  // let name = https://pokeapi.co/api/v2/pokemon/${num}/;
-  // console.log(url);
+  const [imgSrc, setImgSrc] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setImgSrc(data.sprites.other.dream_world.front_default));
+  });
+
   return (
     <div className="cards" id={name} onClick={handleClick}>
-      {/* <img src={url} alt="" /> */}
+      {imgSrc && <img src={imgSrc} alt="" />}
       <p>{name}</p>
-      <p>{url}</p>
-      {/* <p>{name}</p> */}
-      {/* <p>{num}</p> */}
     </div>
   );
 }
