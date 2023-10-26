@@ -82,6 +82,10 @@ function App() {
           </button>
         </>
       )}
+
+      <a id="footer" href="https://github.com/sum4n/TheOdinProject-MemoryCard">
+        Made with React
+      </a>
     </>
   );
 }

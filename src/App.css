@@ -56,3 +56,13 @@ img {
   color: black;
   font-weight: bold;
 }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  /* width: 100%; */
+  font-size: small;
+  font-weight: normal;
+  text-decoration: none;
+  color: mediumspringgreen;
+}
