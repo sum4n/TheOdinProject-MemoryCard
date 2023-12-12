@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 function Card({ name, url, handleClick }) {
   const [imgSrc, setImgSrc] = useState(null);
@@ -16,5 +17,11 @@ function Card({ name, url, handleClick }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  name: PropTypes.string,
+  url: PropTypes.string,
+  handleClick: PropTypes.func,
+};
 
 export default Card;

@@ -26,7 +26,7 @@ function App() {
       // console.log(clickedCardList);
 
       // shuffle and rerender cards
-      let shuffledArray = cardList.sort((a, b) => 0.5 - Math.random());
+      let shuffledArray = cardList.sort(() => 0.5 - Math.random());
       // console.log(shuffledArray);
       setCardList(() => {
         return [...shuffledArray];

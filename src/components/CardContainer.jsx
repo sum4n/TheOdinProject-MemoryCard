@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Card from "./Card";
 
 function CardContainer({ cardList, handleClick }) {
@@ -14,5 +15,10 @@ function CardContainer({ cardList, handleClick }) {
     </div>
   );
 }
+
+CardContainer.propTypes = {
+  cardList: PropTypes.array,
+  handleClick: PropTypes.func,
+};
 
 export default CardContainer;
